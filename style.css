@@ -1,0 +1,158 @@
+        :root {
+            --primary-bg: #001f3f;
+            --accent-color: #0074D9;
+            --text-color: #F0F0F0;
+            --cursor-highlight: #FFFFFF;
+            --card-bg: #003366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background: var(--primary-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Wave Background Effect */
+        .wave-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at var(--cursor-x, 50%) var(--cursor-y, 50%), rgba(0, 116, 217, 0.3), transparent 40%),
+                repeating-linear-gradient(45deg,
+                    rgba(0, 116, 217, 0.05) 0px,
+                    rgba(0, 116, 217, 0.05) 2px,
+                    transparent 2px,
+                    transparent 4px),
+                linear-gradient(120deg,
+                    #001f3f 25%,
+                    #003366 50%,
+                    #001f3f 75%);
+            background-size: 200% 200%;
+            animation: waveFlow 8s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes waveFlow {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+
+        /* Custom Cursor Highlight */
+        /* .cursor-highlight {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: var(--cursor-highlight);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            box-shadow: 0 0 10px var(--cursor-highlight);
+            z-index: 9999;
+        } */
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Container and Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: var(--text-color);
+        }
+
+        /* Recent Posts Grid */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .post-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .post-card:hover {
+            transform: scale(1.05);
+        }
+
+        .post-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .post-card h2 {
+            color: var(--text-color);
+            margin: 15px 0;
+        }
+
+        .post-card p {
+            font-size: 1.1em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            nav a {
+                margin: 0 10px;
+            }
+
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
